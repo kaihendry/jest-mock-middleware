@@ -6,8 +6,6 @@ async function baseHandler() {
   log.info("hihi", { Timestamp: new Date().getTime(), nothing: undefined });
 }
 
-console.log(secretsManager());
-
 const start = middy(baseHandler).use(
   secretsManager({
     fetchData: {
