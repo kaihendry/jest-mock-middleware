@@ -6,8 +6,6 @@ async function baseHandler() {
   log.info("hihi", { Timestamp: new Date().getTime(), nothing: undefined });
 }
 
-module.exports = {
-  start,
-};
-
 const start = middy(baseHandler).use(secretsManager());
+
+module.exports = { start };
