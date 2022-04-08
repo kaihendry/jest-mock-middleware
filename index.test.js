@@ -1,6 +1,6 @@
 jest.mock("aws-sdk");
 
-const SecretsManager = require("aws-sdk/clients/secretsmanager.js"); // v2
+let SecretsManager = require("aws-sdk/clients/secretsmanager");
 
 const main = require("./index.js");
 const log = require("lambda-log");
@@ -8,12 +8,15 @@ const log = require("lambda-log");
 const mockService = (client) => {
   // aws-sdk v2
   const mock = jest.fn();
-  client.prototype.getSecretValue = mock;
+  // mock promise for aws-sdk v2
+  client.prototype.getSecretValue = jest.fn(() => ({
+    promise: () => Promise.resolve({ SecretString: "token" }),
+  }));
   return mock;
 };
 
 test("main", async () => {
-  mockService(SecretsManager, {
+  SecretsManager = mockService(SecretsManager, {
     SecretString: "token",
   });
 
