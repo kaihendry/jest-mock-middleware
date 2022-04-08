@@ -1,3 +1,3 @@
-# Solved!
+# Unsolved!
 
-https://github.com/middyjs/middy/issues/823#issuecomment-1091987392
+Struggling to mock away SecretsManager in [middy secrets-manager middleware](https://github.com/middyjs/middy/blob/2.x/packages/secrets-manager/index.js#L11)
