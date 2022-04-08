@@ -1,9 +1,4 @@
 // mock @middy/secrets-manager with before, after, onError functions that are returned as a function
-jest.fn("@middy/secrets-manager", {
-  onError: jest.fn(),
-  before: jest.fn(),
-  after: jest.fn(),
-});
 
 const main = require("./index.js");
 const log = require("lambda-log");
