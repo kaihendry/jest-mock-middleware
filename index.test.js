@@ -1,4 +1,7 @@
-// mock @middy/secrets-manager with before, after, onError functions that are returned as a function
+const SecretsManager = require("aws-sdk/clients/secretsmanager");
+SecretsManager.prototype.getSecretValue = jest.fn(() => ({
+  promise: () => Promise.resolve(jest.fn),
+}));
 
 const main = require("./index.js");
 const log = require("lambda-log");
